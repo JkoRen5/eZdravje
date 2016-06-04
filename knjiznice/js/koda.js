@@ -4,7 +4,7 @@ var queryUrl = baseUrl + '/query';
 
 var username = "ois.seminar";
 var password = "ois4fri";
-var btoa = require('btoa');
+
 var authorization = "Basic " + btoa(username + ":" + password);
 var ehrId;
 
