@@ -32,9 +32,122 @@ function getSessionId() {
  */
 function generirajPodatke(stPacienta) {
   ehrId = "";
-
+  $.ajaxSetup({
+    headers: {
+        "Authorization": authorization
+    }
+    });
   // TODO: Potrebno implementirati
-
+    $.ajax({
+        url: baseUrl + "/ehr",
+        type: 'POST',
+        success: function (data) {
+            var ehrId = data.ehrId;
+            var partyData;
+            var compositionData;
+            if (stPacienta === 1) {
+                partyData = {
+                    firstNames: "Saxton",
+                    lastNames: "Hale",
+                    dateOfBirth: "1962-4-22T00:01",
+                    partyAdditionalInfo: [
+                        {
+                            key: "ehrId",
+                            value: ehrId
+                        }
+                    ]
+                };
+                compositionData = {
+                    "ctx/time": "2015-3-19T14:00Z",
+                    "ctx/language": "en",
+                    "ctx/territory": "SI",
+                    "vital_signs/body_temperature/any_event/temperature|magnitude": 37.1,
+                    "vital_signs/body_temperature/any_event/temperature|unit": "°C",
+                    "vital_signs/blood_pressure/any_event/systolic": 130,
+                    "vital_signs/blood_pressure/any_event/diastolic": 80,
+                    "vital_signs/height_length/any_event/body_height_length": 191,
+                    "vital_signs/body_weight/any_event/body_weight": 92.2
+                };
+            } else if (stPacienta === 2) {
+                partyData = {
+                    firstNames: "Pink",
+                    lastNames: "Guy",
+                    dateOfBirth: "1-1-01T00:01",
+                    partyAdditionalInfo: [
+                        {
+                            key: "ehrId",
+                            value: ehrId
+                        }
+                    ]
+                };
+                compositionData = {
+                    "ctx/time": "2010-5-1T10:00Z",
+                    "ctx/language": "en",
+                    "ctx/territory": "SI",
+                    "vital_signs/body_temperature/any_event/temperature|magnitude": 36.6,
+                    "vital_signs/body_temperature/any_event/temperature|unit": "°C",
+                    "vital_signs/blood_pressure/any_event/systolic": 420,
+                    "vital_signs/blood_pressure/any_event/diastolic": 69,
+                    "vital_signs/height_length/any_event/body_height_length": 178,
+                    "vital_signs/body_weight/any_event/body_weight": 75.4
+                };
+            } else if (stPacienta === 3) {
+                partyData = {
+                    firstNames: "Keith",
+                    lastNames: "Sanders",
+                    dateOfBirth: "1992-11-12T09:40",
+                    partyAdditionalInfo: [
+                        {
+                            key: "ehrId",
+                            value: ehrId
+                        }
+                    ]
+                };
+                compositionData = {
+                    "ctx/time": "2015-3-19T14:00Z",
+                    "ctx/language": "en",
+                    "ctx/territory": "SI",
+                    "vital_signs/body_temperature/any_event/temperature|magnitude": 69,
+                    "vital_signs/body_temperature/any_event/temperature|unit": "°C",
+                    "vital_signs/blood_pressure/any_event/systolic": 120,
+                    "vital_signs/blood_pressure/any_event/diastolic": 60,
+                    "vital_signs/height_length/any_event/body_height_length": 182,
+                    "vital_signs/body_weight/any_event/body_weight": 80.2
+                };
+            }
+            
+            
+            console.log("Ustvarjam...");
+            $.ajax({
+                url: baseUrl + "/demographics/party",
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(partyData),
+                success: function (party) {
+                    if (party.action == 'CREATE') {
+                        console.log("Pacient "+stPacienta+" je uspesno ustvarjen.");
+                    }
+                }
+            });
+        }
+    });
+    var queryParametri = {
+        "ehrId": ehrId,
+        templateId: 'Vital Signs',
+        format: 'FLAT',
+        committer: 'Dr. Me'
+    };
+    console.log("Vnasam meritve...");
+    $.ajax({
+        url: baseUrl + "/composition?" + $.param(queryParametri),
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(compositionData),
+             success: function (res) {
+            console.log("Pacient "+stPacienta+" je bil pregledan.");
+        }
+    });
+    
   return ehrId;
 }
 
