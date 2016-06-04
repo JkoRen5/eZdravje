@@ -33,7 +33,7 @@ function getSessionId() {
  * @return ehrId generiranega pacienta
  */
 function generirajPodatke(stPacienta) {
-  var ehrId = "";
+  ehrId = "";
   $.ajaxSetup({
       
     headers: {
@@ -178,3 +178,20 @@ function GenerirajTriPaciente() {
 
 
 // TODO: Tukaj implementirate funkcionalnost, ki jo podpira vaša aplikacija
+
+
+function izpisiPodatke(){
+    ehrId = document.getElementById("izbranEHR").value;
+    $.ajax({
+    url: baseUrl + "/demographics/ehr/" + ehrId + "/party",
+    type: 'GET',
+    headers: {
+        "Authorization": authorization
+    },
+    success: function (data) {
+        var party = data.party;
+        document.getElementById("pName").value = party.firstNames+" "+party.lastNames;
+        document.getElementById("pBDay").value = party.dateOfBirth;
+    }
+});
+}
