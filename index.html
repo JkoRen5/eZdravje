@@ -10,6 +10,24 @@
   <script src="knjiznice/js/jquery-2.2.3.min.js"></script>
   <script src="knjiznice/js/bootstrap.min.js"></script>
   <script src="knjiznice/js/koda.js"></script>
+  <script type="text/javascript">
+    window.onload = function() {
+      var a = document.getElementById("DataGenerator");
+      a.onclick = function() {
+        var ehrId1 = generirajPodatke(1);
+        var ehrId2 = generirajPodatke(2);
+        var ehrId3 = generirajPodatke(3);
+        if (ehrId1 && ehrId2 && ehrId3){
+            document.getElementById("SporocilaONapakah").value = "Ustvarjeni so pacienti: /n"+ehrId1+"/n"+ehrId2+"/n"+ehrId3+"/n";
+        } else {
+            document.getElementById("SporocilaONapakah").value = "Something went wrong!";
+        }
+        return false;
+      }
+    }
+  </script>
+  
+  
 </head>
 <body>
 
@@ -29,7 +47,7 @@
         <ul class="nav navbar-nav">
           <li><a href="opis.html">Opis ideje</a></li>
           <li><a href="nacrt.html">Načrt informacijske rešitve</a></li>
-          <li><a onclick = "GenerirajTriPaciente()" href="#">Generiranje podatkov</a></li>
+          <li><a id="DataGenerator"  href="#">Generiranje podatkov</a></li>
         </ul>
       </div>
     </div>
@@ -44,15 +62,15 @@
       </div>
     </div>
     <div class="row">
-      <div class="column">
+      
         EHR koda: <input type="text" name="ehr">
-      </div>
-      <div class="column">
+      
+      
         Izberi pacienta: <select id="izbranPacient"></select>
-      </div>
-      <div class = "column">
+      
+      
         <button type = "button" id="izberiPacienta">Izberi</button>
-      </div>
+      
     </div>
   </div>
   <div class = "container"> 
