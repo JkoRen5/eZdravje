@@ -143,8 +143,14 @@ function generirajPodatke(stPacienta) {
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(compositionData),
-             success: function (res) {
+        success: function (res) {
             console.log("Pacient "+stPacienta+" je bil pregledan.");
+            document.getElementById("SporocilaONapakah").value = "Pacient je uspesno ustvarjen.";
+            
+        },
+        error: function (res) {
+            console.log("Pacienta "+stPacienta+" nismo pregledali.");
+            document.getElementById("SporocilaONapakah").value = "Pacient ni bil uspesno ustvarjen.";
         }
     });
     

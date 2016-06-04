@@ -22,7 +22,7 @@
           <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
         </button>
         <!-- ZAČETEK: Ime vaše aplikacije -->
-        <a class="navbar-brand" href="index.html">{ime vaše aplikacije}</a>
+        <a class="navbar-brand" href="index.html">E-Pregled</a>
         <!-- KONEC: Ime vaše aplikacije -->
       </div>
       <div class="collapse navbar-collapse" id="menujska-vrstica">
@@ -45,7 +45,10 @@
           </div>
           <div class="panel-body">
             <!-- ZAČETEK: Opis ideje, ki jo aplikacija podpira -->
-            <p><strong>TO-DO</strong>: Na tem mestu je potrebno dodati <strong>osnovni opis ideje rešitve</strong> (kakšen je osnovni SCENARIJ UPORABE, KDO je ciljna publika, za kakšen NAMEN se aplikacija uporablja).</p><p class="text-muted">Opis naj ne bo daljši od 200 besed.</p>
+            <p>  Aplikacija E-Pregled je namenjena zdravnikom in medicinskim delavcem. Njen namen je enostavno dodajanje novih meritev vitalnih znakov v EHR pacienta in predpisovanje novih zdravil. </p>
+            <p>Aplikacija se uporablja pri zdravstvenih pregledih – uporabnik najprej poišče EHR profil pacienta, lahko preko ehr id-ju ali pa imenu in priimku. Po kliku aplikacija prikaže pacientove osebne podatke, nazadnje izmerjene podatke o vitalnih znakih – višini, teži, telesni temperaturi in krvnem pritisku, ter podatke o predpisanih zdravilih. </p>
+            <p>Uporabnik (zdravniški delavec) lahko tukaj vnese nove vrednosti izmerjenih vitalnih znakov in predpiše nova zdravila zanj, ali pa uredi obstoječa predpisana zdravila. Nov predpis lahko napiše ročno, ali pa poišče zdravilo v podatkovni bazi preko imena ali CBZ šifre zdravila. Predpisu doda še podatke o dozi in jemanju, ob kliku na gumb »Predpiši« pa se predpis doda v pacientov EHR.</p>
+            
             <!-- KONEC: Opis ideje, ki jo aplikacija podpira -->
           </div>
         </div>
@@ -55,7 +58,10 @@
           </div>
           <div class="panel-body">
             <!-- ZAČETEK: Uporabljeni zunanji viri podatkov -->
-            <p><strong>TO-DO</strong>: Na tem mestu je navesti zunanji vir podatkov (URL naslov), na kakšen način ste ga uporabili (neposredni API klic, uvožena statična datoteka ipd.) in kaj je bil namen uporabe (kako se vključuje v osnovno idejo aplikacije).</p>
+            <p> Zunanji vir podatkov: <a href ="http://www.cbz.si/">http://www.cbz.si/</a></p>
+            <p> Uporabljena je uvožena statična datoteka sif30.csv, ki predstavlja seznam zdravil za predpisovanje. V aplikaciji lahko po tej datoteki iščemo zdravila preko njihove CBZ šifre ali imena.</p>
+            <p> Datoteka je bila ročno presneta <a href = "http://ww.cbz.si/cbz2/sif30.csv">z spletnega mesta.</a></p>
+            
             <!-- KONEC: Uporabljeni zunanji viri podatkov -->
           </div>
         </div>
