@@ -31,7 +31,7 @@ function getSessionId() {
  * @return ehrId generiranega pacienta
  */
 function generirajPodatke(stPacienta) {
-  ehrId = "";
+  var ehrId = "";
   $.ajaxSetup({
     headers: {
         "Authorization": authorization
@@ -129,28 +129,28 @@ function generirajPodatke(stPacienta) {
                     }
                 }
             });
-        }
-    });
-    var queryParametri = {
-        "ehrId": ehrId,
-        templateId: 'Vital Signs',
-        format: 'FLAT',
-        committer: 'Dr. Me'
-    };
-    console.log("Vnasam meritve...");
-    $.ajax({
-        url: baseUrl + "/composition?" + $.param(queryParametri),
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(compositionData),
-        success: function (res) {
-            console.log("Pacient "+stPacienta+" je bil pregledan.");
-            document.getElementById("SporocilaONapakah").value = "Pacient je uspesno ustvarjen.";
-            
-        },
-        error: function (res) {
-            console.log("Pacienta "+stPacienta+" nismo pregledali.");
-            document.getElementById("SporocilaONapakah").value = "Pacient ni bil uspesno ustvarjen.";
+             var queryParametri = {
+                "ehrId": ehrId,
+                templateId: 'Vital Signs',
+                format: 'FLAT',
+                committer: 'Dr. Me'
+            };
+            console.log("Vnasam meritve...");
+            $.ajax({
+                url: baseUrl + "/composition?" + $.param(queryParametri),
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(compositionData),
+                success: function (res) {
+                    console.log("Pacient "+stPacienta+" je bil pregledan.");
+                    document.getElementById("SporocilaONapakah").value = "Pacient je uspesno ustvarjen.";
+                    
+                },
+                error: function (res) {
+                    console.log("Pacienta "+stPacienta+" nismo pregledali.");
+                    document.getElementById("SporocilaONapakah").value = "Pacient ni bil uspesno ustvarjen.";
+                }
+            });
         }
     });
     
