@@ -144,8 +144,12 @@ function generirajPodatke(stPacienta) {
                 success: function (res) {
                     console.log("Pacient "+stPacienta+" je bil pregledan.");
                     document.getElementById("SporocilaONapakah").value = "Pacient je uspesno ustvarjen.";
-                    
+                    var x = document.getElementById("izbranPacient");
+                    var option = document.createElement("option");
+                    option.text = partyData.firstNames+" "+partyData.lastNames + " ("+ehrId+")";
+                    x.add(option);
                 },
+                
                 error: function (res) {
                     console.log("Pacienta "+stPacienta+" nismo pregledali.");
                     document.getElementById("SporocilaONapakah").value = "Pacient ni bil uspesno ustvarjen.";
