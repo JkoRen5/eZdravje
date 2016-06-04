@@ -157,5 +157,17 @@ function generirajPodatke(stPacienta) {
   return ehrId;
 }
 
+function GenerirajTriPaciente() {
+    var ehrId1 = generirajPodatke(1);
+    var ehrId2 = generirajPodatke(2);
+    var ehrId3 = generirajPodatke(3);
+    if (ehrId1 && ehrId2 && ehrId3){
+        document.getElementById("SporocilaONapakah").value = "Ustvarjeni so pacienti: /n"+ehrId1+"/n"+ehrId2+"/n"+ehrId3+"/n";
+    } else {
+        
+        document.getElementById("SporocilaONapakah").value = "Something went wrong!";
+    }
+}
+
 
 // TODO: Tukaj implementirate funkcionalnost, ki jo podpira vaša aplikacija
