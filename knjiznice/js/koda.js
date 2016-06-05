@@ -241,6 +241,7 @@ function zadnjaMeritev(){
         success: function (res) {
             
             for (var i in res) {
+                document.getElementById("MeritveEHR").innerHTML = "";
                 var opt = document.createElement('option');
                 opt.value = res[i].time;
                 opt.innerHTML = res[i].time;
