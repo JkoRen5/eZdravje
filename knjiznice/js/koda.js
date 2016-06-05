@@ -305,6 +305,7 @@ function zadnjaMeritev(){
 
 function izpisiMeritev(index){
     // Izpisi meritev vitalnih znakov glede na indeks
+    console.log("Izpisujem meritev "+list.options[index].value+ "(mesto "+index+")");
     var list = document.getElementById("MeritveEHR");
     document.getElementById("addDataMSP").value = MStlak[index];
     document.getElementById("addDataMDP").value = MDtlak[index];
