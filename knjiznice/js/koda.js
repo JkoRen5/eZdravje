@@ -187,9 +187,18 @@ function GenerirajTriPaciente() {
 
 // TODO: Tukaj implementirate funkcionalnost, ki jo podpira vaša aplikacija
 
+function nastaviID(index){
+    var list = document.getElementById("izbranPacient");
+    var pacient = list.options[list.selectedIndex].value;
+    var res = pacient.split(" ");
+    // Zadnji element je (ehrId)
+    var id = res[res.length-1];
+    id = id.replace(/()/g, '');
+    document.getElementById("EHRizbran").value = id;
+}
 
 function izpisiPodatke(){
-    ehrId = document.getElementById("izbranEHR").value;
+    ehrId = document.getElementById("EHRizbran").value;
     $.ajax({
     url: baseUrl + "/demographics/ehr/" + ehrId + "/party",
     type: 'GET',
