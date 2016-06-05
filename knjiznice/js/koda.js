@@ -399,7 +399,7 @@ function ustvariNovEHR() {
 }
 
 function vstaviPredpise(){
-    return $.ajax({
+    $.ajax({
         url: baseUrl + "/view/" + ehrId + "/medication",
         type: 'GET',
         headers: {
