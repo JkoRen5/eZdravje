@@ -210,9 +210,9 @@ function izpisiPodatke(){
         var party = data.party;
         console.log("Nasel podatke. Vpisujem ...")
         // Vpisi osebne podatke, podatke o zadnji meritvi in o zdravilih
-        $('addDataName').value = party.firstNames+" "+party.lastNames;
-        $('addDataBday').value = party.dateOfBirth;
-        $('addDataEHR').value = ehrId;
+        document.getElementById('addDataName').value = party.firstNames+" "+party.lastNames;
+        document.getElementById('addDataBday').value = party.dateOfBirth;
+        document.getElementById('addDataEHR').value = ehrId;
         zadnjaMeritev();
         vstaviPredpise();
     },
@@ -415,7 +415,7 @@ function vstaviPredpise(){
             document.getElementById("medicationsList").innerHTML = "";
             for (var i = 0; i < res.length; i++) {
                 // Za vsako zdravilo dodaj okvir
-                $('medicationsList').append("<div class='row' style='border: 1px gray; padding: 2px;'><span>" +res[i].medicine+ "</span><span> Doza: "+ res[i].quantity_amount +" "+res[i].quantity_unit+"</span><span> Od: "+res[i].start_date+"</span><span> Do: "+res[i].stop_date+"</span><button type='button' value='Remove' onclick='odstraniPredpis(this);'>Odstrani</button></div>");
+                document.getElementById("medicationsList").append("<div class='row' style='border: 1px gray; padding: 2px;'><span>" +res[i].medicine+ "</span><span> Doza: "+ res[i].quantity_amount +" "+res[i].quantity_unit+"</span><span> Od: "+res[i].start_date+"</span><span> Do: "+res[i].stop_date+"</span><button type='button' value='Remove' onclick='odstraniPredpis(this);'>Odstrani</button></div>");
             }
         },
         error: function(res) {
