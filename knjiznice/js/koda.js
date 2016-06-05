@@ -239,9 +239,10 @@ function zadnjaMeritev(){
             "Ehr-Session": sessionId
         },
         success: function (res) {
+            document.getElementById("MeritveEHR").innerHTML = "<option></option>";
             
             for (var i in res) {
-                document.getElementById("MeritveEHR").innerHTML = "";
+                
                 var opt = document.createElement('option');
                 opt.value = res[i].time;
                 opt.innerHTML = res[i].time;
@@ -307,13 +308,13 @@ function izpisiMeritev(index){
     // Izpisi meritev vitalnih znakov glede na indeks
     console.log("Izpisujem meritev "+list.options[index].value+ "(mesto "+index+")");
     var list = document.getElementById("MeritveEHR");
-    document.getElementById("addDataMSP").value = MStlak[index];
-    document.getElementById("addDataMDP").value = MDtlak[index];
+    document.getElementById("addDataMSP").value = MStlak[index-1];
+    document.getElementById("addDataMDP").value = MDtlak[index-1];
     document.getElementById("addDataMDate").value = list.options[index].value;
-    document.getElementById("addDataMHeight").value = Mvisina[index].height;
-    document.getElementById("addDataMWeight").value = Mteza[index].weight;
-    document.getElementById("addDataMTemp").value = Mtemp[index].temperature;
-    document.getElementById("addDataMOxy").value = Mkisik[index].spO2;
+    document.getElementById("addDataMHeight").value = Mvisina[index-1].height;
+    document.getElementById("addDataMWeight").value = Mteza[index-1].weight;
+    document.getElementById("addDataMTemp").value = Mtemp[index-1].temperature;
+    document.getElementById("addDataMOxy").value = Mkisik[index-1].spO2;
     console.log("Prikazal podatke meritve.");
 }
 
