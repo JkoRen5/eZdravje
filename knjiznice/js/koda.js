@@ -445,17 +445,16 @@ function dodajZdravila(tekst){
     var sez = document.getElementById("seznamZdravil");
     for (var i=1; i<vsevrstice.length; i++) {
         var data = vsevrstice[i].split(',');
-        if (data.length == naslovi.length) {
-            console.log(data);
-            var tarr = [];
-            for (var j=0; j<naslovi.length; j++) {
-                tarr.push(naslovi[j]+":"+data[j]);
-                var o = document.createElement("option");
-                o.text = data[1];
-                sez.add(o);
-            }
-            zdravila.push(tarr);
-        }
+        
+        console.log(data[1]);
+            
+       
+        var o = document.createElement("option");
+        o.text = data[1];
+        sez.add(o);
+            
+        
+        
     }
     
     
