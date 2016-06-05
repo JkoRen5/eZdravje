@@ -193,7 +193,7 @@ function nastaviID(index){
     var res = pacient.split(" ");
     // Zadnji element je (ehrId)
     var id = res[res.length-1];
-    id = id.replace(/()/g, '');
+    id = id.replace(/[()]/g, '');
     document.getElementById("EHRizbran").value = id;
 }
 
