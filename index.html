@@ -68,7 +68,7 @@
   				  <div class="col-lg-4 col-md-4 col-sm-4">Registrirani pacienti <select class = "form-control input-sm" id="izbranPacient"  onchange= "if (this.selectedIndex) nastaviID(this.selectedIndex);"></select></div>
   				</div>
   				<div class="row">
-  				  <div class="col-lg-4 col-md-4 col-sm-4"><button type="button" class="btn btn-primary btn-xs" onclick="izpisiPodatke()">Izpisi podatke EHR</button><span id="izpisEHR"></span></div>
+  				  <div class="col-lg-4 col-md-4 col-sm-4"><button type="button"  onclick="izpisiPodatke();">Izpisi podatke EHR</button><span id="izpisEHR"></span></div>
   				</div>
   			</div>
       </div>
@@ -85,7 +85,7 @@
   				<span>Ime</span><input id="createNames" type="text" class="form-control input-mini" placeholder="Janez">
   				<span>Priimek</span><input id="createLastNames" type="text" class="form-control" placeholder="Novak">
   				<span>Datum rojstva</span><input id="createBDay" type="text" class="form-control" placeholder="1969-01-15T08:50">
-  				<button type="button" class="btn btn-primary btn-xs" onclick="ustvariNovEHR()">Shrani osnovne podatke pacienta</button><span id="createNEHR"></span>
+  				<button type="button"  onclick="ustvariNovEHR()">Shrani osnovne podatke pacienta</button><span id="createNEHR"></span>
   			</div>
       </div>
     </div>
@@ -95,7 +95,8 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           <div class="row">
-            <div class="col-lg-8 col-md-8 col-sm-8"><b>Podatki EHR Pacienta in zadnje meritve</b></div>
+            <div class="col-lg-8 col-md-8 col-sm-8"><b>Podatki EHR pacienta in meritve</b></div>
+            <div class="col-lg-4 col-md-4 col-sm-4"><select class="form-control input-sm" id="MeritveEHR" onchange= "if (this.selectedIndex) izpisiMeritev(this.selectedIndex);"><option value=""></option></select></div>
           </div>
         </div>
         <div class="panel-body">

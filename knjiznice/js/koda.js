@@ -211,11 +211,8 @@ function izpisiPodatke(){
         $('addDataName').value = party.firstNames+" "+party.lastNames;
         $('addDataBday').value = party.dateOfBirth;
         $('addDataEHR').value = ehrId;
-        
         zadnjaMeritev();
         vstaviPredpise();
-        
-        
     },
     error: function(data) {
          $('addDataName').value = "Prislo je do napake pri iskanju pacienta.";
@@ -226,14 +223,120 @@ function izpisiPodatke(){
 
 function zadnjaMeritev(){
     // O pacientu z ehrId vzemimo podatke o zadnji meritvi in jih vpisemo
+    $.ajax({
+        url: baseUrl + "/view/" + ehrId + "/weight",
+        type: 'GET',
+        headers: {
+            "Authorization": authorization
+        },
+        success: function (res) {
+            
+            for (var i in res) {
+                var opt = document.createElement('option');
+                opt.value = res[i].time;
+                opt.innerHTML = res[i].time;
+                document.getElementById("MeritveEHR").appendChild(opt);
+            }
+            Mteza = res;
+            
+        }
+    });
+    $.ajax({
+        url: baseUrl + "/view/" + ehrId + "/height",
+        type: 'GET',
+        headers: {
+            "Authorization": authorization
+        },
+        success: function (res) {
+            Mvisina = res;
+        }
+    });
+    $.ajax({
+        url: baseUrl + "/view/" + ehrId + "/blood_pressure",
+        type: 'GET',
+        headers: {
+            "Authorization": authorization
+        },
+        success: function (res) {
+            for (var i in res) {
+                MDtlak[i] = res[i].diastolic;
+                MStlak[i] = res[i].systolic;
+            }
+            
+        }
+    });
+    $.ajax({
+        url: baseUrl + "/view/" + ehrId + "/body_temperature",
+        type: 'GET',
+        headers: {
+            "Authorization": authorization
+        },
+        success: function (res) {
+            Mtemp = res;
+        }
+    });
+    $.ajax({
+        url: baseUrl + "/view/" + ehrId + "/spO2",
+        type: 'GET',
+        headers: {
+            "Authorization": authorization
+        },
+        success: function (res) {
+            Mkisik = res;
+        }
+    });
     
-    
-    
+    izpisiMeritev(0);
+}
+
+function izpisiMeritev(index){
+    // Izpisi meritev vitalnih znakov glede na indeks
+    var list = document.getElementById("MeritveEHR");
+    document.getElementById("addDataMDate").value = list.options[index].value;
+    document.getElementById("addDataMHeight").value = Mvisina[index].height;
+    document.getElementById("addDataMWeight").value = Mteza[index].weight;
+    document.getElementById("addDataMTemp").value = Mtemp[index].temperature;
+    document.getElementById("addDataMSP").value = MStlak[index];
+    document.getElementById("addDataMDP").value = MDtlak[index];
+    document.getElementById("addDataMOxy").value = Mkisik[index].spO2;
+    console.log("Prikazal podatke meritve.");
 }
 
 function dodajMeritev(){
     // Pacientu z ehrId dodaj novo meritev vitalnih znakov
-    
+    $.ajaxSetup({
+        headers: {
+            "Authorization": authorization
+        }
+    });
+    var compositionData = {
+        
+        "ctx/time": document.getElementById("insertDataMDate").value,
+        "ctx/language": "en",
+        "ctx/territory": "SI",
+        "vital_signs/body_temperature/any_event/temperature|magnitude": document.getElementById("insertDataMTemp").value,
+        "vital_signs/body_temperature/any_event/temperature|unit": "°C",
+        "vital_signs/blood_pressure/any_event/systolic": document.getElementById("insertDataMSP").value,
+        "vital_signs/blood_pressure/any_event/diastolic": document.getElementById("insertDataMDP").value,
+        "vital_signs/height_length/any_event/body_height_length": document.getElementById("insertDataMHeight").value,
+        "vital_signs/body_weight/any_event/body_weight": document.getElementById("insertDataMWeight").value
+    };
+    var queryParams = {
+        "ehrId": ehrId,
+        templateId: 'Vital Signs',
+        format: 'FLAT',
+        committer: 'Dr. Me'
+    };
+    $.ajax({
+        url: baseUrl + "/composition?" + $.param(queryParams),
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(compositionData),
+        success: function (res) {
+            $("#header").html("Store composition");
+            $("#result").html(res.meta.href);
+        }
+    });
 }
 
 
