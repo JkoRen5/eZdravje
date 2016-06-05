@@ -78,8 +78,7 @@ function generirajPodatke(stPacienta) {
                     "vital_signs/blood_pressure/any_event/systolic": 130,
                     "vital_signs/blood_pressure/any_event/diastolic": 80,
                     "vital_signs/height_length/any_event/body_height_length": 191,
-                    "vital_signs/body_weight/any_event/body_weight": 92.2,
-                    "vital_signs/spO2/any_event/spO2": 99.9
+                    "vital_signs/body_weight/any_event/body_weight": 92.2
                 };
             } else if (stPacienta === 2) {
                 partyData = {
@@ -102,8 +101,8 @@ function generirajPodatke(stPacienta) {
                     "vital_signs/blood_pressure/any_event/systolic": 420,
                     "vital_signs/blood_pressure/any_event/diastolic": 69,
                     "vital_signs/height_length/any_event/body_height_length": 178,
-                    "vital_signs/body_weight/any_event/body_weight": 75.4,
-                    "vital_signs/spO2/any_event/spO2": 69
+                    "vital_signs/body_weight/any_event/body_weight": 75.4
+                    
                 };
             } else if (stPacienta === 3) {
                 partyData = {
@@ -126,8 +125,8 @@ function generirajPodatke(stPacienta) {
                     "vital_signs/blood_pressure/any_event/systolic": 120,
                     "vital_signs/blood_pressure/any_event/diastolic": 60,
                     "vital_signs/height_length/any_event/body_height_length": 182,
-                    "vital_signs/body_weight/any_event/body_weight": 80.2,
-                    "vital_signs/spO2/any_event/spO2": 80
+                    "vital_signs/body_weight/any_event/body_weight": 80.2
+                    
                 };
             }
             
