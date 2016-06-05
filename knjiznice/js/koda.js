@@ -216,6 +216,10 @@ function izpisiPodatke(){
         vstaviPredpise();
         
         
+    },
+    error: function(data) {
+         $('addDataName').value = "Prislo je do napake pri iskanju pacienta.";
+        
     }
 });
 }
