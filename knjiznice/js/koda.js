@@ -299,12 +299,12 @@ function zadnjaMeritev(){
 function izpisiMeritev(index){
     // Izpisi meritev vitalnih znakov glede na indeks
     var list = document.getElementById("MeritveEHR");
+    document.getElementById("addDataMSP").value = MStlak[index];
+    document.getElementById("addDataMDP").value = MDtlak[index];
     document.getElementById("addDataMDate").value = list.options[index].value;
     document.getElementById("addDataMHeight").value = Mvisina[index].height;
     document.getElementById("addDataMWeight").value = Mteza[index].weight;
     document.getElementById("addDataMTemp").value = Mtemp[index].temperature;
-    document.getElementById("addDataMSP").value = MStlak[index];
-    document.getElementById("addDataMDP").value = MDtlak[index];
     document.getElementById("addDataMOxy").value = Mkisik[index].spO2;
     console.log("Prikazal podatke meritve.");
 }
@@ -413,9 +413,11 @@ function vstaviPredpise(){
         },
         success: function (res) {
             document.getElementById("medicationsList").innerHTML = "";
-            for (var i = 0; i < res.length; i++) {
-                // Za vsako zdravilo dodaj okvir
-                document.getElementById("medicationsList").append("<div class='row' style='border: 1px gray; padding: 2px;'><span>" +res[i].medicine+ "</span><span> Doza: "+ res[i].quantity_amount +" "+res[i].quantity_unit+"</span><span> Od: "+res[i].start_date+"</span><span> Do: "+res[i].stop_date+"</span><button type='button' value='Remove' onclick='odstraniPredpis(this);'>Odstrani</button></div>");
+            if (res.length > 0){
+                for (var i = 0; i < res.length; i++) {
+                    // Za vsako zdravilo dodaj okvir
+                    document.getElementById("medicationsList").append("<div class='row' style='border: 1px gray; padding: 2px;'><span>" +res[i].medicine+ "</span><span> Doza: "+ res[i].quantity_amount +" "+res[i].quantity_unit+"</span><span> Od: "+res[i].start_date+"</span><span> Do: "+res[i].stop_date+"</span><button type='button' value='Remove' onclick='odstraniPredpis(this);'>Odstrani</button></div>");
+                }
             }
         },
         error: function(res) {
