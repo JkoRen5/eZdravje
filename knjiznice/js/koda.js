@@ -208,6 +208,7 @@ function izpisiPodatke(){
     },
     success: function (data) {
         var party = data.party;
+        console.log("Nasel podatke. Vpisujem ...")
         // Vpisi osebne podatke, podatke o zadnji meritvi in o zdravilih
         $('addDataName').value = party.firstNames+" "+party.lastNames;
         $('addDataBday').value = party.dateOfBirth;
@@ -402,7 +403,7 @@ function vstaviPredpise(){
         url: baseUrl + "/view/" + ehrId + "/medication",
         type: 'GET',
         headers: {
-            "Ehr-Session": sessionId
+            "Authorization": authorization
         },
         success: function (res) {
             document.getElementById("medicationsList").innerHTML = "";
