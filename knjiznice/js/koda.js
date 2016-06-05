@@ -361,6 +361,9 @@ function dodajMeritev(){
         success: function (res) {
             $("#header").html("Store composition");
             $("#result").html(res.meta.href);
+            zadnjaMeritev();
+            
+            
         }
     });
 }
