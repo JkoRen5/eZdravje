@@ -58,34 +58,111 @@
   <!-- ZAČETEK: Vsebina aplikacije -->
   <div class="page-header"><h1>E-Pregled</div>
   <div class="row">
-    <div class = "panel panel-default">
-      <div class="panel-heading">
-				<div class="row">
-					<div class="col-lg-8 col-md-8 col-sm-8"><b>Izberi EHR pacienta</b></div>
-					<div class="col-lg-4 col-md-4 col-sm-4"><select class="form-control input-sm" id="PresetEHRd"><option value=""></option></select></div>
-				</div>
-			</div>
-			<div class="panel-body">
-				<span class="label label-default">EHR ID</span> <select id="izbranPacient"></select>
-			</div>
+    <div class="col-lg-6 col-md-6 col-sm 6">
+      <div class = "panel panel-default">
+        <div class="panel-heading">
+  				<div class="row">
+  					<div class="col-lg-4 col-md-4 col-sm-4"><b>Izbran EHR pacienta </b><select id="izbranPacient"></select></div>
+  				</div>
+  				<div class="row">
+  				  <div class="col-lg-4 col-md-4 col-sm-4">Registrirani pacienti <select class="form-control input-sm" id="PresetEHRd"><option value=""></option></select></div>
+  				</div>
+  				<div class="row">
+  				  <div class="col-lg-4 col-md-4 col-sm-4"><button type="button" class="btn btn-primary btn-xs" onclick="izpisiPodatke()">Izpisi podatke EHR</button><span id="izpisEHR"></span></div>
+  				</div>
+  			</div>
+      </div>
     </div>
-    <div class = "panel panel-default">
-      <div class="panel-heading">
-				<div class="row">
-					<div class="col-lg-8 col-md-8 col-sm-8"><b>Dodaj novega pacienta</b></div>
-					<div class="col-lg-4 col-md-4 col-sm-4"><select class="form-control input-sm" id="PresetEHRs"><option value=""></option></select></div>
-				</div>
-			</div>
-			<div class="panel-body">
-				<span class="label label-default">Ime</span><input id="createNames" type="text" class="form-control input-mini" placeholder="Janez">
-				<span class="label label-default">Priimek</span><input id="createLastNames" type="text" class="form-control" placeholder="Novak">
-				<span class="label label-default">Datum rojstva</span><input id="createBDay" type="text" class="form-control" placeholder="1969-01-15T08:50">
-				<button type="button" class="btn btn-primary btn-xs" onclick="ustvariNovEHR()">Shrani osnovne podatke pacienta</button><span id="createNEHR"></span>
-			</div>
+    <div class="col-lg-6 col-md-6 col-sm 6">
+      <div class = "panel panel-default">
+        <div class="panel-heading">
+  				<div class="row">
+  					<div class="col-lg-8 col-md-8 col-sm-8"><b>Dodaj novega pacienta</b></div>
+  					<div class="col-lg-4 col-md-4 col-sm-4"><select class="form-control input-sm" id="PresetEHRs"><option value=""></option></select></div>
+  				</div>
+  			</div>
+  			<div class="panel-body">
+  				<span>Ime</span><input id="createNames" type="text" class="form-control input-mini" placeholder="Janez">
+  				<span>Priimek</span><input id="createLastNames" type="text" class="form-control" placeholder="Novak">
+  				<span>Datum rojstva</span><input id="createBDay" type="text" class="form-control" placeholder="1969-01-15T08:50">
+  				<button type="button" class="btn btn-primary btn-xs" onclick="ustvariNovEHR()">Shrani osnovne podatke pacienta</button><span id="createNEHR"></span>
+  			</div>
+      </div>
     </div>
   </div>
   <div class="row">
-    
+    <div class="col-lg-6 col-md-6 col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8"><b>Podatki EHR Pacienta in zadnje meritve</b></div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class = "row">
+            
+            
+          </div>
+            <span>EHR</span>
+            <span>Ime</span><input id="createNames" type="text" class="form-control input-mini" placeholder="Janez">
+      			<span>Priimek</span><input id="createLastNames" type="text" class="form-control" placeholder="Novak">
+      			<span>Datum rojstva</span><input id="createBDay" type="text" class="form-control" placeholder="1969-01-15T08:50">
+    			<div class = "row">
+    			  
+    			  
+    			</div>
+    			
+            <span>Ime</span><input id="createNames" type="text" class="form-control input-mini" placeholder="Janez">
+      			<span>Priimek</span><input id="createLastNames" type="text" class="form-control" placeholder="Novak">
+      			<span>Datum rojstva</span><input id="createBDay" type="text" class="form-control" placeholder="1969-01-15T08:50">
+          </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8"><b>Vnesi nove meritve vitalnih znakov</b></div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class = "row">
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class = "row">
+    <div class="col-lg-6 col-md-6 col-sm 6">
+      <div class = "panel panel-default">
+        <div class = "panel-heading">
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8"><b>Predpisana zdravila</b></div>
+          </div>
+        </div>
+        <div class = "panel-body">
+          <div class = "panel-row">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm 6">
+      <div class = "panel-panel-default">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8"><b>Seznam zdravil</b></div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   
   
