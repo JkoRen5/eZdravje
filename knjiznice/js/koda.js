@@ -291,17 +291,7 @@ function zadnjaMeritev(){
             console.log("Nasel temperaturo-");
         }
     });
-    $.ajax({
-        url: baseUrl + "/view/" + ehrId + "/spO2",
-        type: 'GET',
-        headers: {
-            "Ehr-Session": sessionId
-        },
-        success: function (res) {
-            Mkisik = res;
-            console.log("Nasel kisik-");
-        }
-    });
+    
     
     
 }
@@ -316,7 +306,7 @@ function izpisiMeritev(index){
         document.getElementById("addDataMHeight").value = Mvisina[index-1].height;
         document.getElementById("addDataMWeight").value = Mteza[index-1].weight;
         document.getElementById("addDataMTemp").value = Mtemp[index-1].temperature;
-        document.getElementById("addDataMOxy").value = Mkisik[index-1].spO2;
+        
         document.getElementById("addDataMSP").value = MStlak[index-1];
         document.getElementById("addDataMDP").value = MDtlak[index-1];
         console.log("Prikazal podatke meritve.");
@@ -344,7 +334,7 @@ function dodajMeritev(){
         "vital_signs/blood_pressure/any_event/diastolic": document.getElementById("insertDataMDP").value,
         "vital_signs/height_length/any_event/body_height_length": document.getElementById("insertDataMHeight").value,
         "vital_signs/body_weight/any_event/body_weight": document.getElementById("insertDataMWeight").value,
-        "vital_signs/spO2/any_event/spO2": document.getElementById("insertDataMOxy").value
+        
     };
     var queryParams = {
         "ehrId": ehrId,
@@ -448,9 +438,6 @@ function dodajZdravila(tekst){
     for (var i=1; i<vsevrstice.length; i++) {
         var data = vsevrstice[i].split(';');
         
-        
-            
-       
         var o = document.createElement("option");
         o.text = data[1];
         sez.add(o);
@@ -458,10 +445,6 @@ function dodajZdravila(tekst){
         
         
     }
-    
-    
-    
-    
 }
 
 function vstaviPredpise(){
@@ -496,7 +479,7 @@ function dodajPredpis(){
     var od = document.getElementById("newMedicineFrom").value;
     var until = document.getElementById("newMedicineTo").value;
     var sessionId = getSessionId();
-    document.getElementById("medicationsList").append("<div class='row' style='border: 1px gray; padding: 2px;'><span>" +ime+ "</span><span> Doza: "+ doza +" "+enota+"</span><span> Od: "+od+"</span><span> Do: "+until+"</span><button type='button' value='Remove' onclick='odstraniPredpis(this);'>Odstrani</button></div>");
+    document.getElementById("medicationsList").innerHTML += ("<div class='row' style='border: 1px gray; padding: 2px;'><span>" +ime+ "</span><span> Doza: "+ doza +" "+enota+"</span><span> Od: "+od+"</span><span> Do: "+until+"</span><button type='button' value='Remove' onclick='odstraniPredpis(this);'>Odstrani</button></div>");
     
     var sessionId = getSessionId();
     //
