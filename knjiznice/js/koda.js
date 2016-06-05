@@ -430,7 +430,7 @@ var zdravila;
 $(document).ready(function() {
     $.ajax({
         type: "GET",
-        url: "cbz/sif30.csv",
+        url: "knjiznice/cbz/sif30.csv",
         dataType: "text",
         success: function(data) {dodajZdravila(data);}
      });
