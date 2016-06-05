@@ -199,6 +199,7 @@ function nastaviID(index){
 
 function izpisiPodatke(){
     ehrId = document.getElementById("EHRizbran").value;
+    console.log("Izpisujem podatke "+ehrId);
     $.ajax({
     url: baseUrl + "/demographics/ehr/" + ehrId + "/party",
     type: 'GET',
@@ -286,7 +287,7 @@ function zadnjaMeritev(){
         }
     });
     
-    izpisiMeritev(0);
+    
 }
 
 function izpisiMeritev(index){
