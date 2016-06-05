@@ -187,6 +187,11 @@ function GenerirajTriPaciente() {
     }
 }
 
+function fillInPreset(){
+    document.getElementById("createNames").value = "Janez";
+    document.getElementById("createLastNames").value = "Novak";
+    document.getElementById("createBDay").value = "1969-01-15T08:50";
+}
 
 // TODO: Tukaj implementirate funkcionalnost, ki jo podpira vaša aplikacija
 
@@ -298,6 +303,12 @@ function zadnjaMeritev(){
 
 function izpisiMeritev(index){
     // Izpisi meritev vitalnih znakov glede na indeks
+    document.getElementById("addDataMDate").value = "";
+    document.getElementById("addDataMHeight").value = "";
+    document.getElementById("addDataMWeight").value = "";
+    document.getElementById("addDataMTemp").value = "";
+    document.getElementById("addDataMSP").value = "";
+    document.getElementById("addDataMDP").value = "";
     if (index > 0){
         var list = document.getElementById("MeritveEHR");
         console.log("Izpisujem meritev "+list.options[list.selectedIndex].value+ "(mesto "+index+")");

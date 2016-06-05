@@ -63,13 +63,13 @@
       <div class = "panel panel-default">
         <div class="panel-heading">
   				<div class="row">
-  					<div class="col-lg-4 col-md-4 col-sm-4"><b>Izbran EHR pacienta </b><input id = "EHRizbran" type="text" class="form-control input-mini" placeholder="Vpišite EHR ali pa izberite pacienta"> </div>
+  					<b>Izbran EHR pacienta </b><input id = "EHRizbran" type="text" class="form-control input-mini" placeholder="Vpišite EHR ali pa izberite pacienta"> 
   				</div>
   				<div class="row">
-  				  <div class="col-lg-4 col-md-4 col-sm-4">Registrirani pacienti <select class = "form-control input-sm" id="izbranPacient"  onchange= "if (this.selectedIndex) nastaviID(this.selectedIndex);"><option></option></select></div>
+  				  Registrirani pacienti <select class = "form-control input-sm" id="izbranPacient"  onchange= "if (this.selectedIndex) nastaviID(this.selectedIndex);"><option></option></select>
   				</div>
   				<div class="row">
-  				  <div class="col-lg-4 col-md-4 col-sm-4"><button type="button"  onclick="izpisiPodatke();">Izpisi podatke EHR</button><span id="izpisEHR"></span></div>
+  				  <button type="button"  onclick="izpisiPodatke();">Izpisi podatke EHR</button>
   				</div>
   			</div>
       </div>
@@ -79,7 +79,7 @@
         <div class="panel-heading">
   				<div class="row">
   					<div class="col-lg-8 col-md-8 col-sm-8"><b>Dodaj novega pacienta</b></div>
-  					<div class="col-lg-4 col-md-4 col-sm-4"><select class="form-control input-sm" id="PresetEHRs"><option value=""></option></select></div>
+  					<div class="col-lg-4 col-md-4 col-sm-4"><button type="button" id="PresetEHRs" onclick="fillInPreset()"></select></div>
   				</div>
   			</div>
   			<div class="panel-body">
@@ -156,9 +156,6 @@
           <div class = "row">
             
             
-          </div>
-          <div class="row">
-            <button  type="button"  onclick="dodajMeritev()">Shrani novo meritev</button><span id="addMeasurement"></span>
           </div>
         </div>
       </div>
