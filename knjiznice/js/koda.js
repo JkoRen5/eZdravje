@@ -309,17 +309,19 @@ function izpisiMeritev(index){
     
     var list = document.getElementById("MeritveEHR");
     console.log("Izpisujem meritev "+list.options[list.selectedIndex].value+ "(mesto "+index+")");
-    document.getElementById("addDataMSP").value = MStlak[index-1];
-    document.getElementById("addDataMDP").value = MDtlak[index-1];
+    
     document.getElementById("addDataMDate").value = list.options[list.selectedIndex].value;
     document.getElementById("addDataMHeight").value = Mvisina[index-1].height;
     document.getElementById("addDataMWeight").value = Mteza[index-1].weight;
     document.getElementById("addDataMTemp").value = Mtemp[index-1].temperature;
     document.getElementById("addDataMOxy").value = Mkisik[index-1].spO2;
+    document.getElementById("addDataMSP").value = MStlak[index-1];
+    document.getElementById("addDataMDP").value = MDtlak[index-1];
     console.log("Prikazal podatke meritve.");
 }
 
 function dodajMeritev(){
+    console.log("Shranjujem meritev...")
     var sessionId = getSessionId();
     // Pacientu z ehrId dodaj novo meritev vitalnih znakov
     $.ajaxSetup({
@@ -337,7 +339,8 @@ function dodajMeritev(){
         "vital_signs/blood_pressure/any_event/systolic": document.getElementById("insertDataMSP").value,
         "vital_signs/blood_pressure/any_event/diastolic": document.getElementById("insertDataMDP").value,
         "vital_signs/height_length/any_event/body_height_length": document.getElementById("insertDataMHeight").value,
-        "vital_signs/body_weight/any_event/body_weight": document.getElementById("insertDataMWeight").value
+        "vital_signs/body_weight/any_event/body_weight": document.getElementById("insertDataMWeight").value,
+        "vital_signs/spO2/any_event/spO2": document.getElementById("insertDataMOxy").value
     };
     var queryParams = {
         "ehrId": ehrId,
@@ -360,6 +363,7 @@ function dodajMeritev(){
 
 
 function ustvariNovEHR() {
+    console.log("Ustvarjam nov EHR");
     var sessionId = getSessionId();
     // Ustvari nov EHR zapis iz podatkov v besedilnih poljih
     ehrId = "";
@@ -373,7 +377,7 @@ function ustvariNovEHR() {
         "Ehr-Session": sessionId
     }
     });
-  // TODO: Potrebno implementirati
+ 
     $.ajax({
         url: baseUrl + "/ehr",
         type: 'POST',
@@ -383,9 +387,9 @@ function ustvariNovEHR() {
             var compositionData;
             
             partyData = {
-                firstNames: "Saxton",
-                lastNames: "Hale",
-                dateOfBirth: "1962-4-22T00:01",
+                firstNames: Ime,
+                lastNames: Priimek,
+                dateOfBirth: RojDan,
                 partyAdditionalInfo: [
                     {
                         key: "ehrId",
