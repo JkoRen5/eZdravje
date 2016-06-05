@@ -439,6 +439,7 @@ $(document).ready(function() {
 function dodajZdravila(tekst){
     var stolpci = 7;
     var vsevrstice = tekst.split(/\r\n|\n/);
+    console.log(vsevrstice[0]);
     var naslovi = vsevrstice[0].split(';');
     zdravila = [];
     var sez = document.getElementById("seznamZdravil");
