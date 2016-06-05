@@ -328,44 +328,48 @@ function dodajMeritev(){
     console.log("Shranjujem meritev...")
     var sessionId = getSessionId();
     // Pacientu z ehrId dodaj novo meritev vitalnih znakov
-    $.ajaxSetup({
-        headers: {
+    ehrId = document.getElementById("EHRizbran").value;
+    if (ehrId){
+        $.ajaxSetup({
+            headers: {
+                "Ehr-Session": sessionId
+            }
+        });
+        var compositionData = {
             
-            "Authorization": authorization
-        }
-    });
-    var compositionData = {
-        
-        "ctx/time": document.getElementById("insertDataMDate").value,
-        "ctx/language": "en",
-        "ctx/territory": "SI",
-        "vital_signs/body_temperature/any_event/temperature|magnitude": document.getElementById("insertDataMTemp").value,
-        "vital_signs/body_temperature/any_event/temperature|unit": "°C",
-        "vital_signs/blood_pressure/any_event/systolic": document.getElementById("insertDataMSP").value,
-        "vital_signs/blood_pressure/any_event/diastolic": document.getElementById("insertDataMDP").value,
-        "vital_signs/height_length/any_event/body_height_length": document.getElementById("insertDataMHeight").value,
-        "vital_signs/body_weight/any_event/body_weight": document.getElementById("insertDataMWeight").value,
-        
-    };
-    var queryParams = {
-        "ehrId": ehrId,
-        templateId: 'Vital Signs',
-        format: 'FLAT',
-        committer: 'Dr. Me'
-    };
-    $.ajax({
-        url: baseUrl + "/composition?" + $.param(queryParams),
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(compositionData),
-        success: function (res) {
-            $("#header").html("Store composition");
-            $("#result").html(res.meta.href);
-            zadnjaMeritev();
+            "ctx/time": document.getElementById("insertDataMDate").value,
+            "ctx/language": "en",
+            "ctx/territory": "SI",
+            "vital_signs/body_temperature/any_event/temperature|magnitude": document.getElementById("insertDataMTemp").value,
+            "vital_signs/body_temperature/any_event/temperature|unit": "°C",
+            "vital_signs/blood_pressure/any_event/systolic": document.getElementById("insertDataMSP").value,
+            "vital_signs/blood_pressure/any_event/diastolic": document.getElementById("insertDataMDP").value,
+            "vital_signs/height_length/any_event/body_height_length": document.getElementById("insertDataMHeight").value,
+            "vital_signs/body_weight/any_event/body_weight": document.getElementById("insertDataMWeight").value,
             
+        };
+        var queryParams = {
+            "ehrId": ehrId,
+            templateId: 'Vital Signs',
+            format: 'FLAT',
+            committer: 'Dr. Me'
+        };
+        console.log("Posiljam zahtevo...");
+        $.ajax({
             
-        }
-    });
+            url: baseUrl + "/composition?" + $.param(queryParams),
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(compositionData),
+            success: function (res) {
+                $("#header").html("Store composition");
+                $("#result").html(res.meta.href);
+                zadnjaMeritev();
+                
+                
+            }
+        });
+    }
 }
 
 
