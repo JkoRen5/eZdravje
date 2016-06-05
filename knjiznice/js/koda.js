@@ -214,16 +214,15 @@ function izpisiPodatke(){
         // Vpisi osebne podatke, podatke o zadnji meritvi in o zdravilih
         console.log(party.firstNames+" "+party.lastNames+" "+party.dateOfBirth+" "+ehrId)
         document.getElementById('addDataName').value = party.firstNames+" "+party.lastNames;
-        
-        var ronedan = document.getElementById('#addDataBday');
+        var ronedan = document.getElementById('addDataBday');
         ronedan.value = party.dateOfBirth;
-        var ehrd = document.getElementById('#addDataEHR');
+        var ehrd = document.getElementById('addDataEHR');
         ehrd.value = ehrId;
         zadnjaMeritev();
         vstaviPredpise();
     },
     error: function(data) {
-         document.getElementById('addDataName').value = "Prislo je do napake pri iskanju pacienta.";
+         document.getElementById('addDataName').value = "Prislo je do napake pri izpisu podatkov.";
         
     }
 });
