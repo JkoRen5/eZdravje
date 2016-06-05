@@ -306,11 +306,11 @@ function zadnjaMeritev(){
 
 function izpisiMeritev(index){
     // Izpisi meritev vitalnih znakov glede na indeks
-    console.log("Izpisujem meritev "+list.options[index].value+ "(mesto "+index+")");
+    console.log("Izpisujem meritev "+list.options[list.selectedIndex].value+ "(mesto "+index+")");
     var list = document.getElementById("MeritveEHR");
     document.getElementById("addDataMSP").value = MStlak[index-1];
     document.getElementById("addDataMDP").value = MDtlak[index-1];
-    document.getElementById("addDataMDate").value = list.options[index].value;
+    document.getElementById("addDataMDate").value = list.options[list.selectedIndex].value;
     document.getElementById("addDataMHeight").value = Mvisina[index-1].height;
     document.getElementById("addDataMWeight").value = Mteza[index-1].weight;
     document.getElementById("addDataMTemp").value = Mtemp[index-1].temperature;
