@@ -137,7 +137,7 @@
             
           </div>
           <div class="row">
-            <button  type="button" class="btn btn-primary btn-xs" onclick="dodajMeritev()">Shrani novo meritev</button><span id="addMeasurement"></span>
+            <button  type="button"  onclick="dodajMeritev()">Shrani novo meritev</button><span id="addMeasurement"></span>
           </div>
         </div>
       </div>
@@ -156,17 +156,7 @@
             <!-- Tukaj dodaj interaktiven seznam predpisanih zdravil-->
             <div class="container" id="medicationsList" overflow:auto>
               
-              <div class="row" style="border: 1px gray; padding: 2px;">
-                <span> Herpisderpin </span>
-                <button type="button" value="Remove" onclick="odstraniPredpis(this);">Odstrani</button>
-              </div>
-              <div class="row">
-                <span> Gottampootisine </span>
-                <span> Doza: 400000 mg</span>
-                <span> Od: enki</span>
-                <span> Do: neki</span>
-                <button type="button" value="Remove" onclick="odstraniPredpis(this);">Odstrani</button>
-              </div>
+              
               
             </div>
           </div>
@@ -182,14 +172,19 @@
         </div>
         <div class="panel-body">
           <div class="row">
-            <select id="Medicines" size = "8" multiple></select>
+            <select id="seznamZdravil" size="8" multiple>
+              
+            </select>
           </div>
-          <div class "row">
+          <div class="row">
             <span>Ime zdravila: </span> <input type="text" id="newMedicineName" class="form-control input-mini">
             <span>Od: </span><input type="text" id="newMedicineFrom" class="form-control input-mini">
             <span>Do: </span><input type="text" id="newMedicineTo" class="form-control input-mini">
             <span>Doza: </span><input type="text" id="newMedicineDose" class="form-control input-mini">
             <span>Enota doze: </span><input type="text" id="newMedicineUnit" class="form-control input-mini">
+          </div>
+          <div class="row">
+            <button  type="button" onclick="dodajPredpis()">Predpiši novo zdravilo</button>
           </div>
         </div>
       </div>

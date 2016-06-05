@@ -327,7 +327,8 @@ function dodajMeritev(){
     // Pacientu z ehrId dodaj novo meritev vitalnih znakov
     $.ajaxSetup({
         headers: {
-            "Ehr-Session": sessionId
+            
+            "Authorization": authorization
         }
     });
     var compositionData = {
@@ -411,9 +412,9 @@ function ustvariNovEHR() {
                     if (party.action == 'CREATE') {
                         var x = document.getElementById("izbranPacient");
                         var option = document.createElement("option");
-                        option.text = partyData.firstNames+" "+partyData.lastNames + " ("+ehrId+")";
+                        option.text = Ime+" "+Priimek + " ("+ehrId+")";
                         x.add(option);
-                        console.log("Nov pacient je uspesno ustvarjen.");
+                        console.log("Nov pacient "+ehrId+" je uspesno ustvarjen.");
                     }
                 }
             });
@@ -422,6 +423,45 @@ function ustvariNovEHR() {
     });
     
   return ehrId;
+}
+
+var zdravila;
+
+$(document).ready(function() {
+    $.ajax({
+        type: "GET",
+        url: "cbz/sif30.csv",
+        dataType: "text",
+        success: function(data) {dodajZdravila(data);}
+     });
+});
+
+function dodajZdravila(tekst){
+    var stolpci = 7;
+    var vsevrstice = tekst.split(/\r\n|\n/);
+    var naslovi = vsevrstice[0].split(';');
+    zdravila = [];
+    
+    for (var i=1; i<vsevrstice.length; i++) {
+        var data = vsevrstice[i].split(',');
+        if (data.length == naslovi.length) {
+
+            var tarr = [];
+            for (var j=0; j<naslovi.length; j++) {
+                tarr.push(naslovi[j]+":"+data[j]);
+            }
+            zdravila.push(tarr);
+        }
+    }
+    
+    
+    for (var i in zdravila){
+        var sez = document.getElementById("seznamZdravil");
+        var o = document.createElement("option");
+        o.value = zdravila[i][1];
+        sez.add(o);
+        
+    }
 }
 
 function vstaviPredpise(){
