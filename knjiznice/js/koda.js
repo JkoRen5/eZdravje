@@ -41,11 +41,12 @@ var Mkisik;
  * @return ehrId generiranega pacienta
  */
 function generirajPodatke(stPacienta) {
+    sessionId = getSessionId();
   ehrId = "";
   $.ajaxSetup({
       
     headers: {
-        "Authorization": authorization
+        "Ehr-Session": sessionId
     }
     });
   // TODO: Potrebno implementirati
@@ -198,13 +199,14 @@ function nastaviID(index){
 }
 
 function izpisiPodatke(){
+    var sessionId = getSessionId();
     ehrId = document.getElementById("EHRizbran").value;
     console.log("Izpisujem podatke "+ehrId);
     $.ajax({
     url: baseUrl + "/demographics/ehr/" + ehrId + "/party",
     type: 'GET',
     headers: {
-        "Authorization": authorization
+        "Ehr-Session": sessionId
     },
     success: function (data) {
         var party = data.party;
@@ -225,13 +227,14 @@ function izpisiPodatke(){
 }
 
 function zadnjaMeritev(){
+    var sessionId = getSessionId();
     // Vzemi podatke o meritvah vitalnih znakov pacienta
     console.log("Iscem meritve...")
     $.ajax({
         url: baseUrl + "/view/" + ehrId + "/weight",
         type: 'GET',
         headers: {
-            "Authorization": authorization
+            "Ehr-Session": sessionId
         },
         success: function (res) {
             
@@ -250,7 +253,7 @@ function zadnjaMeritev(){
         url: baseUrl + "/view/" + ehrId + "/height",
         type: 'GET',
         headers: {
-            "Authorization": authorization
+            "Ehr-Session": sessionId
         },
         success: function (res) {
             Mvisina = res;
@@ -261,7 +264,7 @@ function zadnjaMeritev(){
         url: baseUrl + "/view/" + ehrId + "/blood_pressure",
         type: 'GET',
         headers: {
-            "Authorization": authorization
+            "Ehr-Session": sessionId
         },
         success: function (res) {
             for (var i in res) {
@@ -275,7 +278,7 @@ function zadnjaMeritev(){
         url: baseUrl + "/view/" + ehrId + "/body_temperature",
         type: 'GET',
         headers: {
-            "Authorization": authorization
+            "Ehr-Session": sessionId
         },
         success: function (res) {
             Mtemp = res;
@@ -286,7 +289,7 @@ function zadnjaMeritev(){
         url: baseUrl + "/view/" + ehrId + "/spO2",
         type: 'GET',
         headers: {
-            "Authorization": authorization
+            "Ehr-Session": sessionId
         },
         success: function (res) {
             Mkisik = res;
@@ -311,10 +314,11 @@ function izpisiMeritev(index){
 }
 
 function dodajMeritev(){
+    var sessionId = getSessionId();
     // Pacientu z ehrId dodaj novo meritev vitalnih znakov
     $.ajaxSetup({
         headers: {
-            "Authorization": authorization
+            "Ehr-Session": sessionId
         }
     });
     var compositionData = {
@@ -350,6 +354,7 @@ function dodajMeritev(){
 
 
 function ustvariNovEHR() {
+    var sessionId = getSessionId();
     // Ustvari nov EHR zapis iz podatkov v besedilnih poljih
     ehrId = "";
     var Ime = document.getElementById("createNames").value;
@@ -359,7 +364,7 @@ function ustvariNovEHR() {
   $.ajaxSetup({
       
     headers: {
-        "Authorization": authorization
+        "Ehr-Session": sessionId
     }
     });
   // TODO: Potrebno implementirati
@@ -405,12 +410,13 @@ function ustvariNovEHR() {
 }
 
 function vstaviPredpise(){
+    var sessionId = getSessionId();
     console.log("Iscem predpisana zdravila...");
     $.ajax({
         url: baseUrl + "/view/" + ehrId + "/medication",
         type: 'GET',
         headers: {
-            "Authorization": authorization
+            "Ehr-Session": sessionId
         },
         success: function (res) {
             document.getElementById("medicationsList").innerHTML = "";
