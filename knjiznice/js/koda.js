@@ -441,7 +441,7 @@ function dodajZdravila(tekst){
     var vsevrstice = tekst.split(/\r\n|\n/);
     var naslovi = vsevrstice[0].split(';');
     zdravila = [];
-    
+    var sez = document.getElementById("seznamZdravil");
     for (var i=1; i<vsevrstice.length; i++) {
         var data = vsevrstice[i].split(',');
         if (data.length == naslovi.length) {
@@ -449,19 +449,18 @@ function dodajZdravila(tekst){
             var tarr = [];
             for (var j=0; j<naslovi.length; j++) {
                 tarr.push(naslovi[j]+":"+data[j]);
+                var o = document.createElement("option");
+                o.text = data[1];
+                sez.add(o);
             }
             zdravila.push(tarr);
         }
     }
     
+    console.log(zdravila[0]);
+    console.log(zdravila[0][1]);
     
-    for (var i in zdravila){
-        var sez = document.getElementById("seznamZdravil");
-        var o = document.createElement("option");
-        o.value = zdravila[i][1];
-        sez.add(o);
-        
-    }
+    
 }
 
 function vstaviPredpise(){
