@@ -213,9 +213,12 @@ function izpisiPodatke(){
         console.log("Nasel podatke. Vpisujem ...")
         // Vpisi osebne podatke, podatke o zadnji meritvi in o zdravilih
         console.log(party.firstNames+" "+party.lastNames+" "+party.dateOfBirth+" "+ehrId)
-        $('#addDataName').value = party.firstNames+" "+party.lastNames;
-        $('#addDataBday').value = party.dateOfBirth;
-        $('#addDataEHR').value = ehrId;
+        document.getElementById('addDataName').value = party.firstNames+" "+party.lastNames;
+        
+        var ronedan = document.getElementById('#addDataBday');
+        ronedan.value = party.dateOfBirth;
+        var ehrd = document.getElementById('#addDataEHR');
+        ehrd.value = ehrId;
         zadnjaMeritev();
         vstaviPredpise();
     },
