@@ -23,6 +23,14 @@ function getSessionId() {
     return response.responseJSON.sessionId;
 }
 
+// Tabele, kamor se bodo shranile meritve pacienta
+var Mteza;
+var Mvisina;
+var Mtemp;
+var MStlak;
+var MDtlak;
+var Mkisik;
+
 
 /**
  * Generator podatkov za novega pacienta, ki bo uporabljal aplikacijo. Pri
@@ -190,11 +198,32 @@ function izpisiPodatke(){
     },
     success: function (data) {
         var party = data.party;
-        document.getElementById("pName").value = party.firstNames+" "+party.lastNames;
-        document.getElementById("pBDay").value = party.dateOfBirth;
+        // Vpisi osebne podatke, podatke o zadnji meritvi in o zdravilih
+        $('addDataName').value = party.firstNames+" "+party.lastNames;
+        $('addDataBday').value = party.dateOfBirth;
+        $('addDataEHR').value = ehrId;
+        
+        zadnjaMeritev();
+        vstaviPredpise();
+        
+        
     }
 });
 }
+
+function zadnjaMeritev(){
+    // O pacientu z ehrId vzemimo podatke o zadnji meritvi in jih vpisemo
+    
+    
+    
+}
+
+function dodajMeritev(){
+    // Pacientu z ehrId dodaj novo meritev vitalnih znakov
+    
+}
+
+
 
 function ustvariNovEHR() {
     // Ustvari nov EHR zapis iz podatkov v besedilnih poljih
@@ -251,6 +280,35 @@ function ustvariNovEHR() {
   return ehrId;
 }
 
+function vstaviPredpise(){
+    return $.ajax({
+        url: baseUrl + "/view/" + ehrId + "/medication",
+        type: 'GET',
+        headers: {
+            "Ehr-Session": sessionId
+        },
+        success: function (res) {
+            document.getElementById("medicationsList").innerHTML = "";
+            for (var i = 0; i < res.length; i++) {
+                // Za vsako zdravilo dodaj okvir
+                $('medicationsList').append("<div class='row' style='border: 1px gray; padding: 2px;'><span>" +res[i].medicine+ "</span><span> Doza: "+ res[i].quantity_amount +" "+res[i].quantity_unit+"</span><span> Od: "+res[i].start_date+"</span><span> Do: "+res[i].stop_date+"</span><button type='button' value='Remove' onclick='odstraniPredpis(this);'>Odstrani</button></div>");
+            }
+        },
+        error: function(res) {
+            document.getElementById("medicationsList").innerHTML = "Napaka pri izpisu predpisanih zdravil";
+        }
+    });
+}
+
+function dodajPredpis(){
+    // Glede na podatke na obrazcu doda novo predpisano zdravilo
+    
+}
+
 function odstraniPredpis(elem){
-    elem.parentNode.remove();
+    elem.parentNode.remove(); //Odstrani prikaz na spletni strani
+    
+    // Treba je odstraniti se zapis iz ehr
+    
+    
 }
