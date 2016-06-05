@@ -214,7 +214,7 @@ function izpisiPodatke(){
         // Vpisi osebne podatke, podatke o zadnji meritvi in o zdravilih
         console.log(party.firstNames+" "+party.lastNames+" "+party.dateOfBirth+" "+ehrId)
         document.getElementById('addDataName').value = party.firstNames+" "+party.lastNames;
-        var ronedan = document.getElementById('addDataBday');
+        var ronedan = document.getElementById('addDataBDay');
         ronedan.value = party.dateOfBirth;
         var ehrd = document.getElementById('addDataEHR');
         ehrd.value = ehrId;
