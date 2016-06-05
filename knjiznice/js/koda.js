@@ -250,3 +250,7 @@ function ustvariNovEHR() {
     
   return ehrId;
 }
+
+$('.removeMed').click( function () {
+    $(this).parent().remove();
+});

@@ -102,19 +102,18 @@
           <div class = "row">
             
             
-          </div>
-            <span>EHR</span>
-            <span>Ime</span><input id="createNames" type="text" class="form-control input-mini" placeholder="Janez">
-      			<span>Priimek</span><input id="createLastNames" type="text" class="form-control" placeholder="Novak">
-      			<span>Datum rojstva</span><input id="createBDay" type="text" class="form-control" placeholder="1969-01-15T08:50">
-    			<div class = "row">
-    			  
-    			  
-    			</div>
-    			
-            <span>Ime</span><input id="createNames" type="text" class="form-control input-mini" placeholder="Janez">
-      			<span>Priimek</span><input id="createLastNames" type="text" class="form-control" placeholder="Novak">
-      			<span>Datum rojstva</span><input id="createBDay" type="text" class="form-control" placeholder="1969-01-15T08:50">
+            <span>Ime: </span><input type="text" id="addDataName" class="form-control input-mini" readonly>
+            <span>Datum rojstva: </span><input type="text" id="addDataBDay" class="form-control input-mini" readonly>
+            <span>EHR: </span><input type="text" id="addDataEHR" class="form-control input-mini" readonly>
+            
+            
+            <span>Datum in ura meritve: </span><input type="text" id="addDataMDate" class="form-control input-mini" readonly>
+            <span>Telesna višina: </span><input type="text" id="addDataMHeight" class="form-control input-mini" readonly>
+            <span>Telesna teža: </span>: </span><input type="text" id="addDataMWeight" class="form-control input-mini" readonly>
+            <span>Telesna temperatura: </span><input type="text" id="addDataMTemp" class="form-control input-mini" readonly>
+            <span>Sistoločni krvni tlak: </span><input type="text" id="addDataMSP" class="form-control input-mini" readonly>
+            <span>Diastolični krvni tlak: </span><input type="text" id="addDataMDP" class="form-control input-mini" readonly>
+            <span>Kisik v krvi: </span><input type="text" id="addDataMOxy" class="form-control input-mini" readonly>
           </div>
       </div>
     </div>
@@ -127,8 +126,17 @@
         </div>
         <div class="panel-body">
           <div class = "row">
+            <span>Datum in ura meritve: </span><input type="text" id="insertDataMDate" class="form-control input-mini">
+            <span>Telesna višina: </span><input type="text" id="insertDataMHeight" class="form-control input-mini" >
+            <span>Telesna teža: </span>: </span><input type="text" id="insertDataMWeight" class="form-control input-mini">
+            <span>Telesna temperatura: </span><input type="text" id="insertDataMTemp" class="form-control input-mini">
+            <span>Sistoločni krvni tlak: </span><input type="text" id="insertDataMSP" class="form-control input-mini">
+            <span>Diastolični krvni tlak: </span><input type="text" id="insertDataMDP" class="form-control input-mini">
+            <span>Kisik v krvi: </span><input type="text" id="insertDataMOxy" class="form-control input-mini">
             
-            
+          </div>
+          <div class="row">
+            <button  type="button" class="btn btn-primary btn-xs" onclick="dodajMeritev()">Shrani novo meritev</button><span id="addMeasurement"></span>
           </div>
         </div>
       </div>
@@ -144,7 +152,22 @@
         </div>
         <div class = "panel-body">
           <div class = "panel-row">
-            
+            <!-- Tukaj dodaj interaktiven seznam predpisanih zdravil-->
+            <div class="container" id="medicationsList">
+              
+              <div class="row">
+                <span> Herpisderpin </span>
+                <button type="button"  value="." id="removeMed"></button>
+              </div>
+              <div class="row">
+                <span> Gottampootisine </span>
+                <span> Doza: 400000 mg</span>
+                <span> Od: enki</span>
+                <span> Do: neki</span>
+                <button type="button"  value="." id="removeMed"></button>
+              </div>
+              
+            </div>
           </div>
         </div>
       </div>
@@ -153,12 +176,19 @@
       <div class = "panel-panel-default">
         <div class="panel-heading">
           <div class="row">
-            <div class="col-lg-8 col-md-8 col-sm-8"><b>Seznam zdravil</b></div>
+            <div class="col-lg-8 col-md-8 col-sm-8"><b>Predpiši novo zdravilo</b></div>
           </div>
         </div>
         <div class="panel-body">
           <div class="row">
-            
+            <select id="Medicines" size = "8" multiple></select>
+          </div>
+          <div class "row">
+            <span>Ime zdravila: </span> <input type="text" id="newMedicineName" class="form-control input-mini">
+            <span>Od: </span><input type="text" id="newMedicineFrom" class="form-control input-mini">
+            <span>Do: </span><input type="text" id="newMedicineTo" class="form-control input-mini">
+            <span>Doza: </span><input type="text" id="newMedicineDose" class="form-control input-mini">
+            <span>Enota doze: </span><input type="text" id="newMedicineUnit" class="form-control input-mini">
           </div>
         </div>
       </div>
@@ -168,7 +198,7 @@
   
   
   
-  <
+  
   <div class = "container"> 
     <p id = SporocilaONapakah>Test.</p>
   </div>
