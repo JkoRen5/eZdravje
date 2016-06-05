@@ -195,3 +195,58 @@ function izpisiPodatke(){
     }
 });
 }
+
+function ustvariNovEHR() {
+    // Ustvari nov EHR zapis iz podatkov v besedilnih poljih
+    ehrId = "";
+    var Ime = document.getElementById("createNames").value;
+    var Priimek = document.getElementById("createLastNames").value;
+    var RojDan = document.getElementById("createBDay").value;
+    
+  $.ajaxSetup({
+      
+    headers: {
+        "Authorization": authorization
+    }
+    });
+  // TODO: Potrebno implementirati
+    $.ajax({
+        url: baseUrl + "/ehr",
+        type: 'POST',
+        success: function (data) {
+            var ehrId = data.ehrId;
+            var partyData;
+            var compositionData;
+            
+            partyData = {
+                firstNames: "Saxton",
+                lastNames: "Hale",
+                dateOfBirth: "1962-4-22T00:01",
+                partyAdditionalInfo: [
+                    {
+                        key: "ehrId",
+                        value: ehrId
+                    }
+                ]
+            };
+               
+            
+            
+            console.log("Ustvarjam...");
+            $.ajax({
+                url: baseUrl + "/demographics/party",
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(partyData),
+                success: function (party) {
+                    if (party.action == 'CREATE') {
+                        console.log("Nov pacient je uspesno ustvarjen.");
+                    }
+                }
+            });
+            
+        }
+    });
+    
+  return ehrId;
+}

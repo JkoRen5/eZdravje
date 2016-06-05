@@ -56,49 +56,42 @@
   <!-- KONEC: Menujska vrstica na vrhu spletne strani -->
 
   <!-- ZAČETEK: Vsebina aplikacije -->
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <p class="lead"><strong>Izbira Pacienta</strong></p>
-      </div>
+  <div class="page-header"><h1>E-Pregled</div>
+  <div class="row">
+    <div class = "panel panel-default">
+      <div class="panel-heading">
+				<div class="row">
+					<div class="col-lg-8 col-md-8 col-sm-8"><b>Izberi EHR pacienta</b></div>
+					<div class="col-lg-4 col-md-4 col-sm-4"><select class="form-control input-sm" id="PresetEHRd"><option value=""></option></select></div>
+				</div>
+			</div>
+			<div class="panel-body">
+				<span class="label label-default">EHR ID</span> <select id="izbranPacient"></select>
+			</div>
     </div>
-    <div class="row">
-      
-        EHR koda: <input id="izbranEHR" type="text" name="ehr">
-      
-      
-        Izberi pacienta: <select id="izbranPacient"></select>
-      
-      
-        <button type = "button" id="izberiPacienta">Izberi</button>
-      
+    <div class = "panel panel-default">
+      <div class="panel-heading">
+				<div class="row">
+					<div class="col-lg-8 col-md-8 col-sm-8"><b>Dodaj novega pacienta</b></div>
+					<div class="col-lg-4 col-md-4 col-sm-4"><select class="form-control input-sm" id="PresetEHRs"><option value=""></option></select></div>
+				</div>
+			</div>
+			<div class="panel-body">
+				<span class="label label-default">Ime</span><input id="createNames" type="text" class="form-control input-mini" placeholder="Janez">
+				<span class="label label-default">Priimek</span><input id="createLastNames" type="text" class="form-control" placeholder="Novak">
+				<span class="label label-default">Datum rojstva</span><input id="createBDay" type="text" class="form-control" placeholder="1969-01-15T08:50">
+				<button type="button" class="btn btn-primary btn-xs" onclick="ustvariNovEHR()">Shrani osnovne podatke pacienta</button><span id="createNEHR"></span>
+			</div>
     </div>
   </div>
-  <div class = "container">
-    <div class = "row">
-      <p class = "lead"> <strong>Podatki o Pacientu</strong></p>
-    </div>
-      
-    <div id = "OsebniPodatki">
-      <div class ="row">
-        Ime: <p id="pName"></p>
-      </div>
-      <div class ="row">
-        Rojstni datum: <p id="pBDay"></p>
-      </div>
-      <div class ="row">
-        Ime: <p id="pName"></p>
-      </div>
-    </div>
-    <div id="ZadnjaMeritev">
-      <div class ="row">
-        Datum meritve:
-      </div>
-      
-      
-    </div>
+  <div class="row">
+    
   </div>
   
+  
+  
+  
+  <
   <div class = "container"> 
     <p id = SporocilaONapakah>Test.</p>
   </div>
