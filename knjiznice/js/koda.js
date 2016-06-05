@@ -307,7 +307,7 @@ function izpisiMeritev(index){
     var list = document.getElementById("MeritveEHR");
     document.getElementById("addDataMSP").value = MStlak[index];
     document.getElementById("addDataMDP").value = MDtlak[index];
-    document.getElementById("addDataMDate").value = list.options[index+1].value;
+    document.getElementById("addDataMDate").value = list.options[index].value;
     document.getElementById("addDataMHeight").value = Mvisina[index].height;
     document.getElementById("addDataMWeight").value = Mteza[index].weight;
     document.getElementById("addDataMTemp").value = Mtemp[index].temperature;
