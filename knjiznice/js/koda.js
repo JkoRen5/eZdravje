@@ -224,7 +224,8 @@ function izpisiPodatke(){
 }
 
 function zadnjaMeritev(){
-    // O pacientu z ehrId vzemimo podatke o zadnji meritvi in jih vpisemo
+    // Vzemi podatke o meritvah vitalnih znakov pacienta
+    console.log("Iscem meritve...")
     $.ajax({
         url: baseUrl + "/view/" + ehrId + "/weight",
         type: 'GET',
@@ -239,8 +240,9 @@ function zadnjaMeritev(){
                 opt.innerHTML = res[i].time;
                 document.getElementById("MeritveEHR").appendChild(opt);
             }
-            Mteza = res;
             
+            Mteza = res;
+            console.log("Nasel tezo-");
         }
     });
     $.ajax({
@@ -251,6 +253,7 @@ function zadnjaMeritev(){
         },
         success: function (res) {
             Mvisina = res;
+            console.log("Nasel visino-");
         }
     });
     $.ajax({
@@ -264,7 +267,7 @@ function zadnjaMeritev(){
                 MDtlak[i] = res[i].diastolic;
                 MStlak[i] = res[i].systolic;
             }
-            
+            console.log("Nasel tlak-");
         }
     });
     $.ajax({
@@ -275,6 +278,7 @@ function zadnjaMeritev(){
         },
         success: function (res) {
             Mtemp = res;
+            console.log("Nasel temperaturo-");
         }
     });
     $.ajax({
@@ -285,6 +289,7 @@ function zadnjaMeritev(){
         },
         success: function (res) {
             Mkisik = res;
+            console.log("Nasel kisik-");
         }
     });
     
@@ -399,6 +404,7 @@ function ustvariNovEHR() {
 }
 
 function vstaviPredpise(){
+    console.log("Iscem predpisana zdravila...");
     $.ajax({
         url: baseUrl + "/view/" + ehrId + "/medication",
         type: 'GET',
