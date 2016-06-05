@@ -445,7 +445,7 @@ function dodajZdravila(tekst){
     for (var i=1; i<vsevrstice.length; i++) {
         var data = vsevrstice[i].split(',');
         if (data.length == naslovi.length) {
-
+            console.log(data);
             var tarr = [];
             for (var j=0; j<naslovi.length; j++) {
                 tarr.push(naslovi[j]+":"+data[j]);
@@ -457,8 +457,7 @@ function dodajZdravila(tekst){
         }
     }
     
-    console.log(zdravila[0]);
-    console.log(zdravila[0][1]);
+    
     
     
 }
