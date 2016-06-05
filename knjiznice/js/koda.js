@@ -251,6 +251,9 @@ function ustvariNovEHR() {
   return ehrId;
 }
 
-$('.removeMed').click( function () {
-    $(this).parent().remove();
+$(function() {
+    
+    $('.removeMed').click( function () {
+        $(this).parent().remove();
+    });
 });
