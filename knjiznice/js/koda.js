@@ -306,18 +306,19 @@ function zadnjaMeritev(){
 
 function izpisiMeritev(index){
     // Izpisi meritev vitalnih znakov glede na indeks
-    
-    var list = document.getElementById("MeritveEHR");
-    console.log("Izpisujem meritev "+list.options[list.selectedIndex].value+ "(mesto "+index+")");
-    
-    document.getElementById("addDataMDate").value = list.options[list.selectedIndex].value;
-    document.getElementById("addDataMHeight").value = Mvisina[index-1].height;
-    document.getElementById("addDataMWeight").value = Mteza[index-1].weight;
-    document.getElementById("addDataMTemp").value = Mtemp[index-1].temperature;
-    document.getElementById("addDataMOxy").value = Mkisik[index-1].spO2;
-    document.getElementById("addDataMSP").value = MStlak[index-1];
-    document.getElementById("addDataMDP").value = MDtlak[index-1];
-    console.log("Prikazal podatke meritve.");
+    if (index > 0){
+        var list = document.getElementById("MeritveEHR");
+        console.log("Izpisujem meritev "+list.options[list.selectedIndex].value+ "(mesto "+index+")");
+        
+        document.getElementById("addDataMDate").value = list.options[list.selectedIndex].value;
+        document.getElementById("addDataMHeight").value = Mvisina[index-1].height;
+        document.getElementById("addDataMWeight").value = Mteza[index-1].weight;
+        document.getElementById("addDataMTemp").value = Mtemp[index-1].temperature;
+        document.getElementById("addDataMOxy").value = Mkisik[index-1].spO2;
+        document.getElementById("addDataMSP").value = MStlak[index-1];
+        document.getElementById("addDataMDP").value = MDtlak[index-1];
+        console.log("Prikazal podatke meritve.");
+    }
 }
 
 function dodajMeritev(){
@@ -408,6 +409,10 @@ function ustvariNovEHR() {
                 data: JSON.stringify(partyData),
                 success: function (party) {
                     if (party.action == 'CREATE') {
+                        var x = document.getElementById("izbranPacient");
+                        var option = document.createElement("option");
+                        option.text = partyData.firstNames+" "+partyData.lastNames + " ("+ehrId+")";
+                        x.add(option);
                         console.log("Nov pacient je uspesno ustvarjen.");
                     }
                 }
