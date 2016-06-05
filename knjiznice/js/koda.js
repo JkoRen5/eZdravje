@@ -439,14 +439,14 @@ $(document).ready(function() {
 function dodajZdravila(tekst){
     var stolpci = 7;
     var vsevrstice = tekst.split(/\n/);
-    console.log(vsevrstice[0]);
+    
     var naslovi = vsevrstice[0].split(';');
     zdravila = [];
     var sez = document.getElementById("seznamZdravil");
     for (var i=1; i<vsevrstice.length; i++) {
         var data = vsevrstice[i].split(';');
         
-        console.log(data[1]);
+        
             
        
         var o = document.createElement("option");
@@ -488,6 +488,17 @@ function vstaviPredpise(){
 
 function dodajPredpis(){
     // Glede na podatke na obrazcu doda novo predpisano zdravilo
+    var ime = document.getElementById("newMedicineName").value;
+    var doza = document.getElementById("newMedicineDose").value;
+    var enota = document.getElementById("newMedicineUnit").value;
+    var od = document.getElementById("newMedicineFrom").value;
+    var until = document.getElementById("newMedicineTo").value;
+    var sessionId = getSessionId();
+    document.getElementById("medicationsList").append("<div class='row' style='border: 1px gray; padding: 2px;'><span>" +ime+ "</span><span> Doza: "+ doza +" "+enota+"</span><span> Od: "+od+"</span><span> Do: "+until+"</span><button type='button' value='Remove' onclick='odstraniPredpis(this);'>Odstrani</button></div>");
+    
+    var sessionId = getSessionId();
+    //
+    
     
 }
 

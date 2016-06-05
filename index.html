@@ -172,7 +172,14 @@
         </div>
         <div class="panel-body">
           <div class="row">
-            <select id="seznamZdravil" size="8" style="width: 150px" multiple>
+            <script type="text/javascript">
+              function spremIme(){
+                var seznam = document.getElementById("seznamZdravil");
+                var ime = seznam.options[seznam.selectedIndex].value;
+                document.getElementById("newMedicineName").value = ime;
+              }
+            </script>
+            <select id="seznamZdravil" size="8" style="width: 300px" onchange="spremIme()" multiple>
               
             </select>
           </div>
