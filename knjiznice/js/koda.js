@@ -306,8 +306,9 @@ function zadnjaMeritev(){
 
 function izpisiMeritev(index){
     // Izpisi meritev vitalnih znakov glede na indeks
-    console.log("Izpisujem meritev "+list.options[list.selectedIndex].value+ "(mesto "+index+")");
+    
     var list = document.getElementById("MeritveEHR");
+    console.log("Izpisujem meritev "+list.options[list.selectedIndex].value+ "(mesto "+index+")");
     document.getElementById("addDataMSP").value = MStlak[index-1];
     document.getElementById("addDataMDP").value = MDtlak[index-1];
     document.getElementById("addDataMDate").value = list.options[list.selectedIndex].value;
